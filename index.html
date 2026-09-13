@@ -401,7 +401,7 @@ function renderTablero(f){
   const retenc   = sum['RETENCIONES RENTA'] || 0;
 
   const ganNeta   = ventas + otrosIng - gastos;
-  const part15    = Math.max(0, ganNeta) * 0.15;
+  const part15    = 0; // sin empleados: no aplica participación laboral 15%
   const baseImp   = ganNeta - part15;
   const ir25      = Math.max(0, baseImp) * 0.22;
   const irPagar   = Math.max(0, ir25 - retenc);
@@ -466,9 +466,9 @@ function renderTablaResultados(f){
     const ga = g('GASTOS', mes);
     const re = g('RETENCIONES RENTA', mes);
     const gn = v + oi - ga;
-    const p15 = Math.max(0, gn)*0.15;
+    const p15 = 0; // sin empleados: no aplica participación laboral 15%
     const bi = gn - p15;
-    const ir = Math.max(0, bi)*0.25;
+    const ir = Math.max(0, bi)*0.22;
     const irp = Math.max(0, ir - re);
     const ul = gn - p15 - ir;
     return {v, oi, ga, re, gn, p15, bi, ir, irp, ul};
@@ -491,7 +491,7 @@ function renderTablaResultados(f){
     {label:'GANANCIA NETA',   key:'gn', cls:'row-calc'},
     {label:'PARTICIPACIÓN 15%',key:'p15', cls:'row-calc'},
     {label:'BASE IMPONIBLE',  key:'bi', cls:'row-calc'},
-    {label:'IMPUESTO RENTA 25%',key:'ir', cls:'row-calc'},
+    {label:'IMPUESTO RENTA 22%',key:'ir', cls:'row-calc'},
     {label:'RETENCIONES RENTA',key:'re', cls:'row-pct'},
     {label:'IR POR PAGAR',    key:'irp', cls:'row-calc'},
     {label:'UTILIDAD LÍQUIDA',key:'ul', cls:'row-final'},
